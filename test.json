@@ -1,0 +1,17 @@
+[
+  {
+    "id": 1,
+    "email": "admin@admin",
+    "userName": "admin",
+    "password": "0",
+    "ruolo": {
+      "ruolo": "admin"
+    },
+    "utente": {
+      "nome": "9",
+      "cognome": "9",
+      "cf": "9",
+      "eta": 22
+    }
+  }
+]

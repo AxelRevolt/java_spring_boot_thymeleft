@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Visualizzazione Utenti</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <!--<link rel="stylesheet" media="screen" th:href="@{/css/css.css}" />-->
+
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .btn-group {
+            margin-right: 5px;
+        }
+        		/* Aggiungi stili per il footer */
+		footer {
+			position: absolute;
+			bottom: 0;
+			width: 100%;
+			background-color: #333;
+			padding: 10px 0;
+			color: white;
+			text-align: center;
+		}
+        
+    </style>
+</head>
+
+<body>
+
+    <h2>Lista Utenti</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Email</th>
+                <th>User Name</th>
+                <th>Ruolo</th>
+                <th>Nome</th>
+                <th>Cognome</th>
+                <th>Età</th>
+                <th>Codice Fiscale</th>
+                <th>Azioni</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <!-- Utilizzo di Thymeleaf per iterare sulla lista di utenti -->
+            <tr th:each="account : ${accounts}">
+                <td th:text="${account.email}"></td>
+                <td th:text="${account.userName}"></td>
+                <td th:text="${account.ruolo.ruolo}"></td>
+                <td th:text="${account.utente.nome}"></td>
+                <td th:text="${account.utente.cognome}"></td>
+                <td th:text="${account.utente.eta}"></td>
+                <td th:text="${account.utente.cf}"></td>
+                <td>
+                    <div class="btn-group">
+                        <form action="#" th:action="@{/toModify}" method="post">
+                            <input type="hidden" name="id" th:value="${account.id}" />
+                            <input type="hidden" name="email" th:value="${account.email}" />
+                            <input type="hidden" name="userName" th:value="${account.userName}" />
+                            <input type="hidden" name="ruolo" th:value="${account.ruolo.ruolo}" />
+                            <input type="hidden" name="nome" th:value="${account.utente.nome}" />
+                            <input type="hidden" name="cognome" th:value="${account.utente.cognome}" />
+                            <input type="hidden" name="eta" th:value="${account.utente.eta}" />
+                            <input type="hidden" name="cf" th:value="${account.utente.cf}" />
+                            <button type="submit" class="btn btn-primary">Modifica</button>
+                        </form>
+                        <form action="#" th:action="@{/delete}" method="post">
+                            <input type="hidden" name="id" th:value="${account.id}" />
+                            <button type="submit" class="btn btn-danger">Elimina</button>
+                        </form>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+
+    </table>
+
+    <div class="container text-center">
+        <form action="#" th:action="@{/index}" method="get">
+            <button class="btn btn-secondary">To Home</button>
+        </form>
+    </div>
+
+    <!-- Aggiungi un pulsante per chiudere l'app -->
+    <div class="container text-center">
+        <form action="#" th:action="@{/closeApp}">
+            <button class="btn btn-danger" type="submit">Close
+                Web-App</button><!--th:onclick="|window.location.href='/closeApp'|">Close App</button>-->
+        </form>
+    </div>
+
+    <!-- Aggiungi un footer -->
+    <footer>
+        <p>&copy; 2023 Your Company Name. All rights reserved.</p>
+    </footer>
+
+    <!-- Bootstrap e jQuery JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        /*$(document).ready(function () {
+            $('#editModal').on('show.bs.modal', function (event) {
+                var button = $(event.relatedTarget); // Bottone che ha attivato il modale
+                var modal = $(this);
+
+                // Recupera i valori dai data-* attributi
+                var email = button.data('email');
+                var username = button.data('username');
+                var ruolo = button.data('ruolo');
+                var nome = button.data('nome');
+                var cognome = button.data('cognome');
+                var eta = button.data('eta');
+
+                // Popola i campi del form con i valori recuperati
+                modal.find('#editEmail').val(email);
+                modal.find('#editUserName').val(username);
+                modal.find('#editRuolo').val(ruolo);
+                modal.find('#editNome').val(nome);
+                modal.find('#editCognome').val(cognome);
+                modal.find('#editEta').val(eta);
+            });
+        });*/
+    </script>
+
+
+</body>
+
+</html>

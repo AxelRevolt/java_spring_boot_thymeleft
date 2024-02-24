@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome Dashboard</title>
+
+      <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" media="screen" th:href="@{/css/css.css}" />
+    
+</head>
+
+<body id="dashBoard">
+    <div class="container mt-5">
+        <h1>Welcome, <span th:text="${account.userName}"></span>!</h1>
+
+        <div class="mt-3">
+            <h2>Your Dashboard</h2>
+
+            <!-- Placeholder for additional information -->
+            <p>This is your personalized dashboard. You can add more content here based on your requirements.</p>
+
+            <!-- Example: Displaying information from files -->
+            <div>
+                <h3>Additional Information</h3>
+                <ul>
+                    <li>File 1: <span th:text="${file1Content}"></span></li>
+                    <li>File 2: <span th:text="${file2Content}"></span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="content">
+        <h3>Return to Home</h3>
+        <form action="#" th:action="@{/index}" method="get">
+            <button type="submit">Return to Home</button>
+        </form>
+    </div>
+
+    <!-- Bootstrap JS e Popper.js (opzionale) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,194 @@
+body {
+	font-family: Arial, sans-serif;
+	margin: 0;
+	padding: 0;
+	/*background-color: #f0f0f0;*/
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100vh;
+	/*background: url('https://i.pinimg.com/originals/c5/9a/d2/c59ad2bd4ad2fbacd04017debc679ddb.jpg') repeat;*/
+	background : url(https://w.wallhaven.cc/full/4o/wallhaven-4oxq1p.jpg);
+	background-size: cover;
+ 	display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+}
+h1{
+  color: white;
+  font-size: 3em;
+  font-style: italic;
+  text-align: center;
+}
+.popup {
+    display: none;
+}
+button{
+	font-size: 1em;
+	font-style: italic;
+}
+label{
+  color : white;
+  font-size: 1.5em;
+  font-style: italic;
+}
+table{
+  background-image: url(https://th.bing.com/th/id/R.da59aca75f9a3a78c820e8fd43448bcb?rik=2MwMV010fUKSOg&pid=ImgRaw&r=0);
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  color:black;
+}
+.glow-on-hover {
+    width: 220px;
+    height: 50px;
+    border: none;
+    outline: none;
+    color: #fff;
+    background: #111;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    border-radius: 10px;
+}
+
+.glow-on-hover:before {
+    content: '';
+    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+    position: absolute;
+    top: -2px;
+    left:-2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing 20s linear infinite;
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+    border-radius: 10px;
+}
+
+.glow-on-hover:active {
+    color: #000;
+}
+
+.glow-on-hover:active:after {
+    background: transparent;
+}
+
+.glow-on-hover:hover:before {
+    opacity: 1;
+}
+
+.glow-on-hover:after {
+    z-index: -1;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #111;
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+}
+
+@keyframes glowing {
+    0% { background-position: 0 0; }
+    50% { background-position: 400% 0; }
+    100% { background-position: 0 0; }
+}
+
+.landing-container {
+	text-align: center;
+}
+
+.button {
+	font-size: 18px;
+	padding: 10px 20px;
+	margin: 10px;
+	cursor: pointer;
+	border: none;
+	border-radius: 5px;
+	background-color: #3498db;
+	color: #fff;
+	outline: none;
+	transition: background-color 0.3s ease;
+}
+
+.button:hover {
+	background-color: #2980b9;
+}
+
+.popup {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.5);
+	justify-content: center;
+	align-items: center;
+}
+
+.popup-content {
+	background: #fff;
+	padding: 20px;
+	border-radius: 5px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+	text-align: center;
+}
+
+.close-btn {
+	background: #e74c3c;
+	color: #fff;
+	padding: 10px 15px;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	margin-top: 10px;
+}
+
+.form-group {
+	margin-bottom: 15px;
+	text-align: left;
+}
+
+.form-group label {
+	display: block;
+	margin-bottom: 5px;
+}
+
+.form-group input {
+	width: 100%;
+	padding: 8px;
+	box-sizing: border-box;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+}
+
+.popup {
+	/* ... Altri stili ... */
+	opacity: 0;
+	transition: opacity 0.5s ease;
+	color: blue;
+}
+
+.popup.show {
+	opacity: 1;
+}
+
+/* Aggiungi stili per il footer */
+footer {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	background-color: #333;
+	padding: 10px 0;
+	color: white;
+	text-align: center;
+}

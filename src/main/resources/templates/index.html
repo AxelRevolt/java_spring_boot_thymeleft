@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+	<title>Benvenuto</title>
+
+	<!-- Custom CSS tets -->
+	<!-- <link rel="stylesheet" media="screen" th:href="@{/css/css.css}" /> -->
+
+	<style>
+		body {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			height: 100vh;
+			margin: 0;
+		}
+
+		.popup {
+			display: none;
+			position: fixed;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			padding: 20px;
+			background-color: #fff;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+			z-index: 999;
+		}
+
+		::placeholder {
+			text-align: center;
+		}
+
+		/* Aggiungi stili per il footer */
+		footer {
+			position: absolute;
+			bottom: 0;
+			width: 100%;
+			background-color: #333;
+			padding: 10px 0;
+			color: white;
+			text-align: center;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="container text-center">
+		<h1>Benvenuto!</h1>
+		<button class="btn btn-primary" onclick="showLoginPopup()">Login</button>
+		<button class="btn btn-secondary" onclick="showRegisterPopup()">Registrazione</button>
+
+		<div id="loginPopup" class="popup">
+			<h2>Login</h2>
+			<form th:object="${account}" action="#" th:action="@{/login}" method="post" class="form-group">
+				<div class="mb-3 row">
+					<div class="col">
+						<label for="loginuserName">UserName:</label>
+						<input th:field="*{userName}" type="text" name="userName" class="form-control"
+							id="loginuserName" required placeholder="Insert your userName">
+					</div>
+					<div class="col">
+						<label for="loginPassword">Password:</label>
+						<input th:field="*{password}" type="password" name="password" class="form-control"
+							id="loginPassword" required placeholder="Insert your password">
+					</div>
+				</div>
+				<button type="submit" class="btn btn-primary">Login</button>
+				<button type="button" class="btn btn-secondary" onclick="closePopup('loginPopup')">Chiudi</button>
+			</form>
+		</div>
+
+		<div id="registerPopup" class="popup">
+			<h2>Registrazione</h2>
+			<form th:object="${account}" action="#" th:action="@{/register}" method="post" class="form-group">
+				<div class="mb-3 row">
+					<div class="mb-3">
+						<label for="email" class="col-sm-2 col-form-label">Email:</label>
+						<input th:field="*{email}" type="email" name="email" class="form-control" required
+							placeholder="Insert your email">
+					</div>
+				</div>
+				<div class="mb-3 row">
+					<div class="col">
+						<label for="userName" class="col-sm-2 col-form-label">UserName:</label>
+						<input th:field="*{userName}" type="text" name="userName" class="form-control" required
+							placeholder="Insert your userName">
+					</div>
+					<div class="col">
+						<label for="password" class="col-sm-2 col-form-label">Password:</label>
+						<input th:field="*{password}" type="password" name="password" class="form-control" required
+							placeholder="Insert your password">
+					</div>
+				</div>
+				<div class="mb-3 row">
+					<div class="col">
+						<label for="utente.nome" class="col-sm-2 col-form-label">Nome:</label>
+						<input th:field="*{utente.nome}" type="text" name="utente.nome" class="form-control" required
+							placeholder="Insert your nome">
+					</div>
+					<div class="col">
+						<label for="utente.cognome" class="col-sm-2 col-form-label">Cognome:</label>
+						<input th:field="*{utente.cognome}" type="text" name="utente.cognome" class="form-control"
+							required placeholder="Insert your cognome">
+					</div>
+				</div>
+				<div class="mb-3 row">
+					<div class="col">
+						<label for="ruolo.ruolo" class="col-sm-2 col-form-label">Ruolo:</label>
+						<input th:field="*{ruolo.ruolo}" type="text" name="ruolo.ruolo" class="form-control" required
+							placeholder="Insert your ruolo">
+					</div>
+					<div class="col">
+						<label for="utente.eta" class="col-sm-2 col-form-label">Età:</label>
+						<input th:field="*{utente.eta}" type="text" name="utente.eta" class="form-control" required
+							placeholder="Insert your età">
+					</div>
+				</div>
+				<div class="mb-3 row">
+					<div class="mb-3">
+						<label for="utente.cf" class="col-sm-2 col-form-label">Codice Fiscale:</label>
+						<input th:field="*{utente.cf}" type="text" name="utente.cf" class="form-control" required
+							placeholder="Insert your codice fiscale">
+					</div>
+				</div>
+
+
+				<button type="submit" class="btn btn-primary">Registra</button>
+				<button type="button" class="btn btn-secondary" onclick="closePopup('registerPopup')">Chiudi</button>
+			</form>
+		</div>
+		<!-- Aggiungi un pulsante per chiudere l'app -->
+		<form action="#" th:action="@{/closeApp}">
+			<button class="btn btn-danger" type="submit">Close
+				Web-App</button><!--th:onclick="|window.location.href='/closeApp'|">Close App</button>-->
+		</form>
+	</div>
+
+	<!-- Aggiungi un footer -->
+	<footer>
+		<p>&copy; 2023 Your Company Name. All rights reserved.</p>
+	</footer>
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+	<script>
+		function showLoginPopup() {
+			document.getElementById('loginPopup').style.display = 'block';
+			document.getElementById('registerPopup').style.display = 'none';
+		}
+
+		function showRegisterPopup() {
+			document.getElementById('registerPopup').style.display = 'block';
+			document.getElementById('loginPopup').style.display = 'none';
+		}
+
+		/*function performLogin() {
+			// Implementazione del login
+			alert('Effettuato il login!');
+		}
+
+		function performRegistration() {
+			// Implementazione della registrazione
+			alert('Registrazione completata!');
+		}*/
+
+		function closePopup(popupId) {
+			document.getElementById(popupId).style.display = 'none';
+		}
+	</script>
+</body>
+
+</html>

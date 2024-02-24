@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modifica Account</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+
+    <div class="container mt-5 mx-auto">
+        <h1 class="mb-4 text-center">Modifica Account</h1>
+
+        <form th:object="${account}" action="#" th:action="@{/saveModify}" method="post" class="form-group">
+
+            <div class="mb-3 row">
+                <div class="col-sm-6">
+                    <label for="email" class="col-form-label">Email:</label>
+                    <input th:field="*{email}" type="email" name="email" class="form-control" required
+                        text="Insert your email">
+                </div>
+                <div class="col-sm-6">
+                    <label for="userName" class="col-form-label">UserName:</label>
+                    <input th:field="*{userName}" type="text" name="userName" class="form-control" required
+                        text="Insert your userName">
+                </div>
+            </div>
+
+            <div class="mb-3 row">
+                <div class="col-sm-6">
+                    <label for="password" class="col-form-label">Password:</label>
+                    <input th:field="*{password}" type="password" name="password" class="form-control" required
+                        text="Insert your password">
+                </div>
+                <div class="col-sm-6">
+                    <label for="utente.nome" class="col-form-label">Nome:</label>
+                    <input th:field="*{utente.nome}" type="text" name="utente.nome" class="form-control" required
+                        text="Insert your nome">
+                </div>
+            </div>
+
+            <div class="mb-3 row">
+                <div class="col-sm-6">
+                    <label for="utente.cognome" class="col-form-label">Cognome:</label>
+                    <input th:field="*{utente.cognome}" type="text" name="utente.cognome" class="form-control" required
+                        text="Insert your cognome">
+                </div>
+                <div class="col-sm-6">
+                    <label for="ruolo.ruolo" class="col-form-label">Ruolo:</label>
+                    <input th:field="*{ruolo.ruolo}" type="text" name="ruolo.ruolo" class="form-control" required
+                        text="Insert your ruolo">
+                </div>
+            </div>
+
+            <div class="mb-3 row">
+                <div class="col-sm-6">
+                    <label for="utente.eta" class="col-form-label">Età:</label>
+                    <input th:field="*{utente.eta}" type="text" name="utente.eta" class="form-control" required
+                        text="Insert your età">
+                </div>
+                <div class="col-sm-6">
+                    <label for="utente.cf" class="col-form-label">Codice Fiscale:</label>
+                    <input th:field="*{utente.cf}" type="text" name="utente.cf" class="form-control" required
+                        text="Insert your codice fiscale">
+                </div>
+            </div>
+
+            <!-- Pulsanti -->
+            <div class="form-group text-center">
+                <input type="hidden" name="id" th:value="${account.id}" />
+                <button class="btn btn-primary" type="submit">Salvataggio dati</button>
+            </div>
+
+        </form>
+
+        <form action="#" th:action="@{/index}" method="get" class="form-group text-center">
+            <button class="btn btn-danger">Home</button>
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.min.js"></script>
+
+    <script>
+
+    </script>
+
+</body>
+
+</html>
