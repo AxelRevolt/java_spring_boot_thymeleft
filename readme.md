@@ -41,9 +41,3 @@ While the application is relatively basic, it serves as an experimental platform
 ## Notes
 - The application initializes the JSON file with sample data for a seamless initial experience.
 - Data is persisted in the JSON file, eliminating the need for a traditional database.
-
-***Example file json :***
-
-**Json :**
-
-https://github.com/AxelRevolt/JavaStandaloneWepAppThymeleaf/blob/7a1874eb8d13e1a2174dbf203e92948561617fb6/test.json#L2-L16
